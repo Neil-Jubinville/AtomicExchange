@@ -1,0 +1,18 @@
+FROM ubuntu
+
+RUN apt-get update
+RUN apt-get install -y python
+RUN apt-get install -y python-pip
+#RUN pip install --upgrade pip
+#RUN apt-get install openssl -y
+
+RUN mkdir /app
+
+COPY ./ /app
+
+RUN pip install -r /app/requirements.txt
+
+#run some processing - v1 is just going to run the test code processing and dump to the console.
+# start the server / service and run the processor to generate the test output.
+#"python /app/manage.py runserver 0.0.0.0:8000"
+CMD ["bash"  ]
