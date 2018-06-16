@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .buddy{ font-weight:600; font-size:20px; }
+
+</style>
+
+
+<div class="h5" style="margin-top: 2em; color:#555;" ><i> This  exchange is focused on atomic swaps & programmable
+                                     timed settlements.  It is also a collection of my crypto and
+                                     blockchain musings as I interact with the greater blockchain community.  - Neil Jubinville </i>
+</div>
+
+
+
+<div class="card" style="width: 100%;margin-top: 20px">
+  <div class="card-header">
+      Current Exchange Members   <a href="/resetdb" class="float-right btn btn-outline-danger" >Reset DB</a>
+  </div>
+  <ul class="list-group list-group-flush">
+     {% for acc in accounts %}
+        <li class="list-group-item"><span class="buddy">{{ acc.owner.username }}</span> 0x{{ acc.bitcoinAddress }}
+          <span class="float-right" >{{ acc.bitcoinBalance }}<img height=30px width=auto src="/static/images/bitcoin.png"></span>
+
+        </li>
+     {% endfor %}
+
+
+  </ul>
+</div>
+
+
+<div class="card" style="width: 100%;margin-top: 20px">
+  <div class="card-header">
+       Bitcoin Daemon RPC Processing Tests
+  </div>
+   <div class="card-body row">
+      <div class="col-md-2">
+          <a class="btn btn-primary" href="/bitcoin/rpc/listsinceblock"> listsinceblock </a>
+      </div>
+      <div class="col-md-10">
+        <i> This test loads and processes sample json outputs
+           as seen from the RPC call. I then verify
+           transactions and update exchange member balances based on confirmations > 6.</i>
+      </div>
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

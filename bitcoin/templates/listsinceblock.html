@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .console {
+        background-color: black;
+        color:green;
+        padding: 20px;
+
+
+    }
+
+
+</style>
+
+
+
+<div class="card" style="width: 100%;margin-top: 20px">
+  <div class="card-header">
+       listsinceblock - SUMMARY   <a href="/resetdb" class="float-right btn btn-outline-danger" >Reset DB</a>
+  </div>
+
+  <div class="card-body">
+
+     <div class="console" >
+         {% for acc in summary.knownAccounts  %}
+              Deposited for {{ acc.owner.username }}: count:{{ acc.depositCount}} sum={{ acc.bitcoinBalance}}
+               <br>
+         {% endfor %}
+         Deposited without reference: count={{ summary.unknownValidTxCount }} sum={{ summary.unknownValidAmount }}<br>
+         Smallest valid deposit: {{ summary.smallestTransaction }}<br>
+         Largest valid deposit: {{ summary.largestTransaction }}
+     </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
